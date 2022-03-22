@@ -25,10 +25,12 @@ namespace AndroidAppchik
             picker.Items.Add("Moodle");
             picker.Items.Add("TTHK");
             picker.SelectedIndexChanged += Picker_SelectedIndexChanged;
+            var urladres = new Entry { Placeholder = "URL-aadress" };
             webView = new WebView
             {
 
             };
+
             SwipeGestureRecognizer swipe = new SwipeGestureRecognizer();
             swipe.Swiped += Swipe_Swiped;
             swipe.Direction = SwipeDirection.Right;

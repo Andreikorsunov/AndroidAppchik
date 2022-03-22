@@ -20,9 +20,9 @@ namespace AndroidAppchik
                 BackgroundColor = Color.LightGreen,
             };
 
-            Button Timer_btn = new Button()
+            Button Table_btn = new Button()
             {
-                Text = "Timer",
+                Text = "Table Page",
                 BackgroundColor = Color.LightGreen,
             };
             Button cliker = new Button()
@@ -72,19 +72,19 @@ namespace AndroidAppchik
             TTT.Clicked += TTT_Clicked;
             StackLayout st = new StackLayout()
             {
-                Children = { Ent_btn, Timer_btn, cliker, Date_btn, SS_btn, frame_btn, image_btn, Valgusfoor_btn, RGB_Btn, TTT }
+                Children = { Ent_btn, Table_btn, cliker, Date_btn, SS_btn, frame_btn, image_btn, Valgusfoor_btn, RGB_Btn, TTT }
             };
             st.BackgroundColor = Color.AntiqueWhite;
             Content = st;
             Ent_btn.Clicked += Ent_btn_Clicked;
-            Timer_btn.Clicked += Timer_btn_Clicked;
+            Table_btn.Clicked += Table_btn_Clicked;
             cliker.Clicked += Cliker_Clicked;
             Date_btn.Clicked += Date_btn_Clicked;
             SS_btn.Clicked += SS_btn_Clicked;
         }
         private async void TTT_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TTTstart());
+            await Navigation.PushAsync(new TripsTrapsTrulls());
         }
         private async void RGB_Btn_Clicked(object sender, EventArgs e)
         {
@@ -114,9 +114,9 @@ namespace AndroidAppchik
         {
             await Navigation.PushAsync(new Clicker());
         }
-        private async void Timer_btn_Clicked(object sender, EventArgs e)
+        private async void Table_btn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Timer_Page());
+            await Navigation.PushAsync(new Table_Page());
         }
         private async void Ent_btn_Clicked(object sender, EventArgs e)
         {

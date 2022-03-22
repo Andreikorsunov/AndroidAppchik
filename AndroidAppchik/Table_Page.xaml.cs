@@ -15,7 +15,7 @@ namespace AndroidAppchik
         ImageCell ic;
         TableSection fotosection;
     }
-    public Table_Page()
+    /*public Table_Page()
     {
         sc = new SwitchCell { Text = "Näita veel " };
         sc.OnChanged += Sc_OnChanged;
@@ -58,5 +58,5 @@ namespace AndroidAppchik
             fotosection.Remove(ic);
             sc.Text = "Näita veel";
         }
-    }
+    }*/
 }
