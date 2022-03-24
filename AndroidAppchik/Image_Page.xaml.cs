@@ -16,7 +16,7 @@ namespace AndroidAppchik
 
         public Image_Page()
         {
-            img = new Image { Source = "chel.jpg" };
+            img = new Image { Source = "krug.jpg" };
             TapGestureRecognizer tap = new TapGestureRecognizer();
             tap.Tapped += Tap_Tapped;
             tap.NumberOfTapsRequired = 2;
@@ -48,11 +48,11 @@ namespace AndroidAppchik
             var imagesender = (Image)sender;
             if(tapid % 2 == 0)
             {
-                img.Source = "kot.jpg";
+                img.Source = "krug.jpg";
             }
             else
             {
-                img.Source = "chel.jpg";
+                img.Source = "krestik.jpg";
             }
         }
     }

@@ -12,8 +12,8 @@ namespace AndroidAppchik
     public partial class TripsTrapsTrulls : ContentPage
     {
         Grid grid2X1, grid3X3;
-        BoxView b;
         Button uus_mang, reeglid;
+        Image img;
         public bool esimene;
         int tulemus = -1;
         int[,] Tulemused = new int[3, 3];
@@ -38,15 +38,18 @@ namespace AndroidAppchik
             {
                 Text = "Uus mäng"
             };
-            grid2X1.Children.Add(uus_mang, 0, 1);
-            uus_mang.Clicked += Uus_mang_Clicked;
-            Content = grid2X1;
             reeglid = new Button()
             {
                 Text = "Reeglid"
             };
+            StackLayout btn = new StackLayout
+            {
+                Children = { uus_mang, reeglid }
+            };
+            grid2X1.Children.Add(uus_mang, 0, 1);
             reeglid.Clicked += Reeglid_Clicked;
-            Content = reeglid;
+            uus_mang.Clicked += Uus_mang_Clicked;
+            Content = grid2X1;
         }
         private void Reeglid_Clicked(object sender, EventArgs e)
         {
@@ -58,7 +61,7 @@ namespace AndroidAppchik
         }
         public async void Kes_on_esimene()
         {
-            string esimene_valik = await DisplayPromptAsync("Kes on esimene?", "Tee valiku Kollane-1 või Punane-2", initialValue: "1", maxLength: 1, keyboard: Keyboard.Numeric);
+            string esimene_valik = await DisplayPromptAsync("Kes on esimene?", "Tee valiku Null-1 või Rist-2", initialValue: "1", maxLength: 1, keyboard: Keyboard.Numeric);
             if (esimene_valik == "1")
             {
                 esimene = true;
@@ -79,7 +82,7 @@ namespace AndroidAppchik
             {
                 Kes_on_esimene();
                 Tulemused = new int[3, 3];
-                tulemus = -1;
+                tulemus = -2;
                 grid3X3 = new Grid
                 {
                     BackgroundColor = Color.Red,
@@ -100,11 +103,12 @@ namespace AndroidAppchik
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        b = new BoxView { BackgroundColor = Color.Green };
-                        grid3X3.Children.Add(b, j, i);
+                        img = new Image();
+                        img.Source = ImageSource.FromFile("fon.jpg");
+                        grid3X3.Children.Add(img, j, i);
                         TapGestureRecognizer tap = new TapGestureRecognizer();
                         tap.Tapped += Tap_Tapped;
-                        b.GestureRecognizers.Add(tap);
+                        img.GestureRecognizers.Add(tap);
                     }
                 }
                 grid2X1.Children.Add(grid3X3, 0, 0);
@@ -140,44 +144,60 @@ namespace AndroidAppchik
             }
             else
             {
-                tulemus = 0;
+                tulemus = -2;
+            }
+            if (checkTie())
+            {
+                DisplayAlert("Viik", "Viik", "OK");
             }
             return tulemus;
+        }
+        private bool checkTie()
+        {
+            for (int i = 0; i < Tulemused.GetLength(0); i++)
+            {
+                for (int j = 0; j < Tulemused.GetLength(1); j++)
+                {
+                    if (Tulemused[i, j] == 2)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
         public void Lopp()
         {
             tulemus = Kontroll();
             if (tulemus == 1)
             {
-                DisplayAlert("Võit", "Esimene on võitja!", "Ok");
+                DisplayAlert("Võit", "Te olete võitja!", "Ok");
             }
             else if (tulemus == 2)
             {
-                DisplayAlert("Võit", "Teine on võitja!", "Ok");
-            }
-            else if (tulemus == 0)
-            {
-                DisplayAlert("Viik", "Viik!", "Ok");
+                DisplayAlert("Võit", "Arvuti on võitja!", "Ok");
             }
         }
         private void Tap_Tapped(object sender, EventArgs e)
         {
-            var b = (BoxView)sender;
-            var r = Grid.GetRow(b);
-            var c = Grid.GetColumn(b);
+            var img = (Image)sender;
+            var r = Grid.GetRow(img);
+            var c = Grid.GetColumn(img);
             if (esimene == true)
             {
-                b = new BoxView { BackgroundColor = Color.Yellow };
+                img.Source = ImageSource.FromFile("nolik.jpg");
+                img.GestureRecognizers.Clear();
                 esimene = false;
                 Tulemused[r, c] = 1;
             }
             else
             {
-                b = new BoxView { BackgroundColor = Color.Red };
+                img.Source = ImageSource.FromFile("krestik.jpg");
+                img.GestureRecognizers.Clear();
                 esimene = true;
                 Tulemused[r, c] = 2;
             }
-            grid3X3.Children.Add(b, c, r);
+            grid3X3.Children.Add(img, c, r);
             Lopp();
         }
     }
