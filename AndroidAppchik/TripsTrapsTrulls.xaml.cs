@@ -172,10 +172,12 @@ namespace AndroidAppchik
             if (tulemus == 1)
             {
                 DisplayAlert("Võit", "Esimine võitis!", "Ok");
+                Uus_mang();
             }
             else if (tulemus == 2)
             {
                 DisplayAlert("Võit", "Teine võitis!", "Ok");
+                Uus_mang();
             }
         }
         private void Tap_Tapped(object sender, EventArgs e)
