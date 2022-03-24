@@ -15,7 +15,7 @@ namespace AndroidAppchik
         Button uus_mang, reeglid;
         Image img;
         public bool esimene;
-        int tulemus = -1;
+        int tulemus = -2;
         int[,] Tulemused = new int[3, 3];
         public TripsTrapsTrulls()
         {
@@ -144,7 +144,7 @@ namespace AndroidAppchik
             }
             else
             {
-                tulemus = -2;
+                tulemus = -1;
             }
             if (checkTie())
             {
@@ -171,11 +171,11 @@ namespace AndroidAppchik
             tulemus = Kontroll();
             if (tulemus == 1)
             {
-                DisplayAlert("Võit", "Te olete võitja!", "Ok");
+                DisplayAlert("Võit", "Esimine võitis!", "Ok");
             }
             else if (tulemus == 2)
             {
-                DisplayAlert("Võit", "Arvuti on võitja!", "Ok");
+                DisplayAlert("Võit", "Teine võitis!", "Ok");
             }
         }
         private void Tap_Tapped(object sender, EventArgs e)
