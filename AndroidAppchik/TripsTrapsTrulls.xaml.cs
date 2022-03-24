@@ -42,10 +42,6 @@ namespace AndroidAppchik
             {
                 Text = "Reeglid"
             };
-            StackLayout btn = new StackLayout
-            {
-                Children = { uus_mang, reeglid }
-            };
             grid2X1.Children.Add(uus_mang, 0, 1);
             reeglid.Clicked += Reeglid_Clicked;
             uus_mang.Clicked += Uus_mang_Clicked;
