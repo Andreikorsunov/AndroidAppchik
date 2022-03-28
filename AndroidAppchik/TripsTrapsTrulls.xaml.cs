@@ -15,7 +15,7 @@ namespace AndroidAppchik
         Button uus_mang, reeglid;
         Image img;
         public bool esimene;
-        int tulemus = -2;
+        int tulemus = -1;
         int[,] Tulemused = new int[3, 3];
         public TripsTrapsTrulls()
         {
@@ -43,6 +43,7 @@ namespace AndroidAppchik
                 Text = "Reeglid"
             };
             grid2X1.Children.Add(uus_mang, 0, 1);
+            grid2X1.Children.Add(reeglid, 0, 2);
             reeglid.Clicked += Reeglid_Clicked;
             uus_mang.Clicked += Uus_mang_Clicked;
             Content = grid2X1;
@@ -78,7 +79,7 @@ namespace AndroidAppchik
             {
                 Kes_on_esimene();
                 Tulemused = new int[3, 3];
-                tulemus = -2;
+                tulemus = -1;
                 grid3X3 = new Grid
                 {
                     BackgroundColor = Color.Red,
