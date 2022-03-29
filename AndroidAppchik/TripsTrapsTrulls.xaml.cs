@@ -143,32 +143,14 @@ namespace AndroidAppchik
             {
                 tulemus = -1;
             }
-            if (checkTie())
-            {
-                DisplayAlert("Viik", "Viik", "OK");
-            }
             return tulemus;
-        }
-        private bool checkTie()
-        {
-            for (int i = 0; i < Tulemused.GetLength(0); i++)
-            {
-                for (int j = 0; j < Tulemused.GetLength(1); j++)
-                {
-                    if (Tulemused[i, j] == 2)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
         }
         public void Lopp()
         {
             tulemus = Kontroll();
             if (tulemus == 1)
             {
-                DisplayAlert("Võit", "Esimine võitis!", "Ok");
+                DisplayAlert("Võit", "Esimene võitis!", "Ok");
                 Uus_mang();
             }
             else if (tulemus == 2)
