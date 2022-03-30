@@ -8,7 +8,7 @@ namespace AndroidAppchik
     {
         public App()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
         }

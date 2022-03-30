@@ -139,6 +139,15 @@ namespace AndroidAppchik
             {
                 tulemus = 2;
             }
+            else if (/*Tulemused[0, 0] != 1 & Tulemused[0, 1] != 1 & Tulemused[0, 2] != 1 & Tulemused[1, 0] != 1
+                & Tulemused[1, 1] != 1 & Tulemused[1, 2] != 1 & Tulemused[2, 0] != 1 & Tulemused[2, 1] != 1 &
+                    Tulemused[2, 2] != 1 &&
+                    Tulemused[0, 0] != 2 & Tulemused[0, 1] != 2 & Tulemused[0, 2] != 2 & Tulemused[1, 0] != 2
+                & Tulemused[1, 1] != 2 & Tulemused[1, 2] != 2 & Tulemused[2, 0] != 2 & Tulemused[2, 1] != 2 &
+                    Tulemused[2, 2] != 2*/)
+            {
+                tulemus = 3;
+            }
             else
             {
                 tulemus = -1;
@@ -151,12 +160,14 @@ namespace AndroidAppchik
             if (tulemus == 1)
             {
                 DisplayAlert("Võit", "Esimene võitis!", "Ok");
-                Uus_mang();
             }
             else if (tulemus == 2)
             {
                 DisplayAlert("Võit", "Teine võitis!", "Ok");
-                Uus_mang();
+            }
+            else if (tulemus == 3)
+            {
+                DisplayAlert("Viik", "Viik!", "Ok");
             }
         }
         private void Tap_Tapped(object sender, EventArgs e)
