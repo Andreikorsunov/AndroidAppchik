@@ -17,6 +17,7 @@ namespace AndroidAppchik
         public bool esimene;
         int tulemus = -1;
         int[,] Tulemused = new int[3, 3];
+        int TurnCount = 0;
         public TripsTrapsTrulls()
         {
             grid2X1 = new Grid
@@ -139,12 +140,7 @@ namespace AndroidAppchik
             {
                 tulemus = 2;
             }
-            else if (/*Tulemused[0, 0] != 1 & Tulemused[0, 1] != 1 & Tulemused[0, 2] != 1 & Tulemused[1, 0] != 1
-                & Tulemused[1, 1] != 1 & Tulemused[1, 2] != 1 & Tulemused[2, 0] != 1 & Tulemused[2, 1] != 1 &
-                    Tulemused[2, 2] != 1 &&
-                    Tulemused[0, 0] != 2 & Tulemused[0, 1] != 2 & Tulemused[0, 2] != 2 & Tulemused[1, 0] != 2
-                & Tulemused[1, 1] != 2 & Tulemused[1, 2] != 2 & Tulemused[2, 0] != 2 & Tulemused[2, 1] != 2 &
-                    Tulemused[2, 2] != 2*/)
+            else if (TurnCount == 9)
             {
                 tulemus = 3;
             }
@@ -160,14 +156,17 @@ namespace AndroidAppchik
             if (tulemus == 1)
             {
                 DisplayAlert("Võit", "Esimene võitis!", "Ok");
+                TurnCount = 0;
             }
             else if (tulemus == 2)
             {
                 DisplayAlert("Võit", "Teine võitis!", "Ok");
+                TurnCount = 0;
             }
             else if (tulemus == 3)
             {
                 DisplayAlert("Viik", "Viik!", "Ok");
+                TurnCount = 0;
             }
         }
         private void Tap_Tapped(object sender, EventArgs e)
@@ -181,6 +180,7 @@ namespace AndroidAppchik
                 img.GestureRecognizers.Clear();
                 esimene = false;
                 Tulemused[r, c] = 1;
+                TurnCount++;
             }
             else
             {
@@ -188,6 +188,7 @@ namespace AndroidAppchik
                 img.GestureRecognizers.Clear();
                 esimene = true;
                 Tulemused[r, c] = 2;
+                TurnCount++;
             }
             grid3X3.Children.Add(img, c, r);
             Lopp();
