@@ -33,6 +33,9 @@
     <Compile Update="TripsTrapsTrulls.xaml.cs">
       <DependentUpon>TripsTrapsTrulls.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Maakonnad.xaml.cs">
+      <DependentUpon>Maakonnad.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Valgusfoor.xaml.cs">
       <DependentUpon>Valgusfoor.xaml</DependentUpon>
     </Compile>

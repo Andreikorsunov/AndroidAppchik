@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidAppchik.Android", "AndroidAppchik.Android\AndroidAppchik.Android.csproj", "{34F29A29-B67C-43C0-89F9-F58D2CBB654C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidAppchik", "AndroidAppchik\AndroidAppchik.csproj", "{29524A51-A295-4732-99E2-445E31349D1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndroidAppchik", "AndroidAppchik\AndroidAppchik.csproj", "{29524A51-A295-4732-99E2-445E31349D1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
