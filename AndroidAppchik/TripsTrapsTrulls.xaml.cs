@@ -17,6 +17,7 @@ namespace AndroidAppchik
         public bool esimene;
         int tulemus = -1;
         int[,] Tulemused = new int[3, 3];
+        int TurnCount = 0;
         public TripsTrapsTrulls()
         {
             grid2X1 = new Grid
@@ -139,42 +140,33 @@ namespace AndroidAppchik
             {
                 tulemus = 2;
             }
+            else if (TurnCount == 9)
+            {
+                tulemus = 3;
+            }
             else
             {
                 tulemus = -1;
             }
-            if (checkTie())
-            {
-                DisplayAlert("Viik", "Viik", "OK");
-            }
             return tulemus;
-        }
-        private bool checkTie()
-        {
-            for (int i = 0; i < Tulemused.GetLength(0); i++)
-            {
-                for (int j = 0; j < Tulemused.GetLength(1); j++)
-                {
-                    if (Tulemused[i, j] == 2)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
         }
         public void Lopp()
         {
             tulemus = Kontroll();
             if (tulemus == 1)
             {
-                DisplayAlert("Võit", "Esimine võitis!", "Ok");
-                Uus_mang();
+                DisplayAlert("Võit", "Esimene võitis!", "Ok");
+                TurnCount = 0;
             }
             else if (tulemus == 2)
             {
                 DisplayAlert("Võit", "Teine võitis!", "Ok");
-                Uus_mang();
+                TurnCount = 0;
+            }
+            else if (tulemus == 3)
+            {
+                DisplayAlert("Viik", "Viik!", "Ok");
+                TurnCount = 0;
             }
         }
         private void Tap_Tapped(object sender, EventArgs e)
@@ -188,6 +180,7 @@ namespace AndroidAppchik
                 img.GestureRecognizers.Clear();
                 esimene = false;
                 Tulemused[r, c] = 1;
+                TurnCount++;
             }
             else
             {
@@ -195,6 +188,7 @@ namespace AndroidAppchik
                 img.GestureRecognizers.Clear();
                 esimene = true;
                 Tulemused[r, c] = 2;
+                TurnCount++;
             }
             grid3X3.Children.Add(img, c, r);
             Lopp();
