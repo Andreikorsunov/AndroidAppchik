@@ -14,6 +14,8 @@ namespace AndroidAppchik
         Image img;
         Picker picker, picker2;
         StackLayout st;
+        Editor et;
+        Label lb;
         string[] maakond = new string[15] { "Harjumaa", "Läänemaa", "Lääne-Virumaa", "Ida-Virumaa"
             , "Hiiumaa", "Saaremaa", "Raplamaa", "Järvamaa", "Jõgevamaa", "Pärnumaa"
             , "Viljandimaa", "Tartumaa", "Valgamaa", "Põlvamaa", "Võrumaa" };
@@ -67,14 +69,21 @@ namespace AndroidAppchik
             picker2.SelectedIndexChanged += Picker2_SelectedIndexChanged;
 
             img = new Image();
-            if (picker2 == "Tallinn")
-            {
-                img.Source = ImageSource.FromFile("narva.jpg");
-            }
+            lb = new Label();
+            et = new Editor 
+            { 
+                Placeholder = "Linn",
+            };
+            et.TextChanged += ET_TextChanged;
 
-            st = new StackLayout { Children = { picker, picker2, img } };
-            Content = st;
+            Content = new StackLayout { Children = { picker, picker2, img, lb, et } };
         }
+
+        private void ET_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             picker2.SelectedIndex = picker.SelectedIndex;
@@ -82,6 +91,118 @@ namespace AndroidAppchik
         private void Picker2_SelectedIndexChanged(object sender, EventArgs e)
         {
             picker.SelectedIndex = picker2.SelectedIndex;
+            if (picker2.SelectedIndex == 0)
+            {
+                img.Source = "tallinn.jpg";
+                lb.Text = "Tallinn on Eesti pealinn ja Harju maakonna halduskeskus" +
+                    ", mis paikneb Põhja-Eesti rannikul Tallinna lahe ääres. " +
+                    "Teadaolevalt on Tallinna, tolleaegse nimega Revalit, " +
+                    "koos oma kodanikkonnaga esimest korda mainitud linnana aastal 1238.";
+            }
+            else if (picker2.SelectedIndex == 1)
+            {
+                img.Source = "haapsalu.jpg";
+                lb.Text = "Haapsalu on linn Eestis Läänemere ääres Haapsalu lahe lõunakaldal, " +
+                    "Lääne maakonna ja omavalitsusliku Haapsalu linna halduskeskus. " +
+                    "Linna territooriumi hulka kuulub Krimmi holm.";
+            }
+            else if (picker2.SelectedIndex == 2)
+            {
+                img.Source = "rakvere.jpg";
+                lb.Text = "Rakvere on linn Lääne-Viru maakonnas, maakonna haldus-, majandus- ja kultuurikeskus. " +
+                    "Rakvere on linn alates 12. juunist 1302, kui sai Taani kuningas Erik Menvedilt Lübecki linnaõiguse. " +
+                    "Rakvere linn on elanike arvult Eesti suuruselt 8. linn ja 14. omavalitsus.";
+            }
+            else if (picker2.SelectedIndex == 3)
+            {
+                img.Source = "narva.jpg";
+                lb.Text = "Rakvere on linn Lääne-Viru maakonnas, maakonna haldus-, majandus- ja kultuurikeskus. " +
+                    "Rakvere on linn alates 12. juunist 1302, kui sai Taani kuningas Erik Menvedilt Lübecki linnaõiguse. " +
+                    "Rakvere linn on elanike arvult Eesti suuruselt 8. linn ja 14. omavalitsus.";
+            }
+            else if (picker2.SelectedIndex == 4)
+            {
+                img.Source = "kardla.jpg";
+                lb.Text = "Kärdla on Hiiu maakonna halduskeskus ja Hiiumaa valla sisene linn. " +
+                    "Tegemist on ainsa linnaga maakonnas. " +
+                    "Läbi linna voolavad Nuutri jõgi, Lumumba jõgi ja Kärdla oja. " +
+                    "Paul Ariste on Kärdla rootsikeelset nime Kärrdal tõlkinud kui Võsaoru. " +
+                    "Hiidlaste seltside jaotuses nimetatakse Kärdla rahvast kohvilähkriteks.";
+            }
+            else if (picker2.SelectedIndex == 5)
+            {
+                img.Source = "kuressaare.jpg";
+                lb.Text = "Kuressaare on Saaremaa ainus linn, Saaremaa valla keskus ja Saare maakonna halduskeskus. " +
+                    "Kuressaare asub Saaremaa lõunarannikul ja on ühtlasi Eesti läänepoolseim linn.";
+            }
+            else if (picker2.SelectedIndex == 6)
+            {
+                img.Source = "rapla.jpg";
+                lb.Text = "Rapla on linn Kesk-Eestis, Tallinnast umbes 50 km edelas. " +
+                    "Rapla on Rapla maakonna ja Rapla valla halduskeskus. " +
+                    "Linna läbib Vigala jõgi ehk Konuvere jõgi.";
+            }
+            else if (picker2.SelectedIndex == 7)
+            {
+                img.Source = "paide.jpg";
+                lb.Text = "Paide on linn Kesk-Eestis, Järva maakonna ja Paide linna nimelise omavalitsusüksuse keskus." +
+                    " Linna on esmakordselt kirjalikes allikates mainitud seoses 1265. aastaga, mil alustati Paide ordulinnuse rajamist." +
+                    " Asula sai linnaõigused 1291. aastal. 2019. aasta alguse seisuga elas linnas 7905 inimest.";
+            }
+            else if (picker2.SelectedIndex == 8)
+            {
+                img.Source = "jogeva.jpg";
+                lb.Text = "Jõgeva on linn Jõgeva maakonnas, maakonna ja Jõgeva valla halduskeskus. " +
+                    "Linna idapiiril voolab Pedja jõgi. Linna pindala on 3,86 km², 2012. aastal oli arvestuslik rändega rahvaarv 5597. " +
+                    "Jõgeva sai aleviks 13. oktoobril 1919 ja kolmanda astme linnaks 1. mail 1938.";
+            }
+            else if (picker2.SelectedIndex == 9)
+            {
+                img.Source = "parnu.jpg";
+                lb.Text = "Pärnu on sadamalinn Eesti edelarannikul Pärnu lahe ääres Pärnu jõe alamjooksul," +
+                    " samanimelise haldusüksuse ja Pärnu maakonna halduskeskus. " +
+                    "Ligi 40 000 elanikuga on Pärnu Eesti suuruselt neljas linn. " +
+                    "Linn hõlmab 33,15 km² suuruse maa-ala, sealhulgas 20% on parkide ja haljasalade all.";
+            }
+            else if (picker2.SelectedIndex == 10)
+            {
+                img.Source = "viljandi.jpg";
+                lb.Text = "Viljandi on linn Lõuna-Eestis. " +
+                    "Viljandi on Viljandi maakonna halduskeskus. " +
+                    "Linn asub Sakala kõrgustikul, Viljandi järve kaldal." +
+                    " 2000. aasta rahvaloenduse järgi oli Viljandis elanikke 20 756; 2004. aastal 20 454 ja 2012. aasta jaanuaris arvestuslikult 17 868." +
+                    " Viljandi on elanike arvult Eestis kuues linn.";
+            }
+            else if (picker2.SelectedIndex == 11)
+            {
+                img.Source = "tartu.jpg";
+                lb.Text = "Tartu on rahvaarvult Eesti teine linn, linnasisese linnana haldusliku Tartu linna keskasula," +
+                    " Lõuna-Eesti suurim keskus ja Tartu maakonna halduskeskus. " +
+                    "Linn asub Emajõe kallastel.";
+            }
+            else if (picker2.SelectedIndex == 12)
+            {
+                img.Source = "valga.jpg";
+                lb.Text = "Valga on maakonnalinn Lõuna-Eestis Eesti-Läti piiril, Valga maakonna ja Valga valla halduskeskus. " +
+                    "Valga on Eesti kõige lõunapoolsem linn. " +
+                    "Enne iseseisvate Eesti ja Läti riikide teket moodustas Valga koos Läti Valkaga ühtse linna. " +
+                    "Valgat läbib Pedeli jõgi. " +
+                    "Linnas asub Valga raudteejaam.";
+            }
+            else if (picker2.SelectedIndex == 13)
+            {
+                img.Source = "polva.jpg";
+                lb.Text = "Põlva on vallasisene linn Orajõe alamjooksul Põlva maakonnas Põlva vallas." +
+                    " Põlvas asub nii Põlva valla kui Põlva maakonna halduskeskus. ";
+            }
+            else if (picker2.SelectedIndex == 14)
+            {
+                img.Source = "voru.jpg";
+                lb.Text = "Võru on linn Eesti kaguosas, mis on Võru maakonna haldus- ja majanduskeskuseks. " +
+                    "Linna pindala on 14 km² ja elanikke on 2019. aasta seisuga 11 859. " +
+                    "Võrus räägitakse peamiselt eesti ja võru keelt. " +
+                    "Võru kaitsepühak on püha Jüri, kelle nime kannab ka Võru peatänav.";
+            }
         }
     }
 }
