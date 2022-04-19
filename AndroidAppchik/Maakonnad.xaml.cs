@@ -93,7 +93,7 @@ namespace AndroidAppchik
             picker.SelectedIndex = picker2.SelectedIndex;
             if (picker2.SelectedIndex == 0)
             {
-                img.Source = "tallinn.jpg";
+                img.Source = "tallinn.png";
                 lb.Text = "Tallinn on Eesti pealinn ja Harju maakonna halduskeskus" +
                     ", mis paikneb Põhja-Eesti rannikul Tallinna lahe ääres. " +
                     "Teadaolevalt on Tallinna, tolleaegse nimega Revalit, " +
