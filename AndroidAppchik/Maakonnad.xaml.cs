@@ -16,12 +16,6 @@ namespace AndroidAppchik
         StackLayout st;
         Editor et;
         Label lb;
-        string[] maakond = new string[15] { "Harjumaa", "Läänemaa", "Lääne-Virumaa", "Ida-Virumaa"
-            , "Hiiumaa", "Saaremaa", "Raplamaa", "Järvamaa", "Jõgevamaa", "Pärnumaa"
-            , "Viljandimaa", "Tartumaa", "Valgamaa", "Põlvamaa", "Võrumaa" };
-        string[] pealinn = new string[15] { "Tallinn", "Haapsalu", "Rakvere", "Narva"
-            , "Kärdla", "Kuressaare", "Rapla", "Paide", "Jõgeva", "Pärnu"
-            , "Viljnadi", "Tartu", "Valga", "Põlva", "Võru" };
         public Maakonnad()
         {
             picker = new Picker
@@ -72,7 +66,8 @@ namespace AndroidAppchik
             lb = new Label();
             et = new Editor 
             { 
-                Placeholder = "Linn",
+                Placeholder = "Maakond",
+                Text = ""
             };
             et.TextChanged += ET_TextChanged;
 
@@ -81,7 +76,52 @@ namespace AndroidAppchik
 
         private void ET_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (et.Text == "Harjumaa")
+            {
+                img.Source = "harjumaa.png";
+                lb.Text = "Harju maakond ehk Harjumaa on 1. järgu haldusüksus Põhja-Eestis. " +
+                    "Harju maakond hõlmab peaaegu täielikult Eesti NSV aegse Harju rajooni ala 1960. aastate lõpul väljakujunenud piirides. " +
+                    "Ajaloolisest Harjumaast hõlmab tänapäevane Harju maakond ligikaudu põhjapoolsed kaks kolmandikku.";
+            }
+            else if (et.Text == "Läänemaa")
+            {
+                img.Source = "laanemaa.png";
+                lb.Text = "Lääne maakond ehk Läänemaa on 1. järgu haldusüksus Eesti lääneosas." +
+                    "Hõlmab ajaloolise Läänemaa põhjaosa. " +
+                    "Naabermaakonnad on kirdes Harju maakond, idas Rapla maakond, lõunas Pärnu maakond, edelas Saare ja läänes Hiiu maakond. " +
+                    "Maakonnas on kolm omavalitsusüksust: Haapsalu linn, Lääne-Nigula vald ja Vormsi vald.";
+            }
+            else if (et.Text == "Lääne-Virumaa")
+            {
+                img.Source = "laaneviru.png";
+                lb.Text = "ääne-Viru maakond ehk Lääne-Virumaa on 1. järgu haldusüksus Eestis. " +
+                    "Lääne-Viru maakond asub Põhja-Eestis. Lääne-Virumaa piirneb idas Ida-Viru, lõunas Jõgeva, ning läänes Järva ja Harju maakonnaga. " +
+                    "Lääne-Virumaa kõrgeim tipp on Emumägi, pikim jõgi Kunda jõgi ja suurim järv on Porkuni järv. " +
+                    "Rannajoone pikkus on 134 km.";
+            }
+            else if (et.Text == "Ida-Virumaa")
+            {
+                img.Source = "ida-viru.png";
+                lb.Text = "Ida-Viru maakond ehk Ida-Virumaa on 1. järgu haldusüksus Eesti kirdeosas, Ida-Eesti piirkonnas. " +
+                    "Hõlmab ajaloolise Virumaa idaosa. " +
+                    "Ida-Virumaa piirneb läänes Lääne-Viru ja edelas Jõgeva maakonnaga ning idas Leningradi oblastiga Venemaal.";
+            }
+            else if (et.Text == "Hiiumaa")
+            {
+                img.Source = "hiiumaa.png";
+                lb.Text = "Hiiumaa on Eesti suuruselt teine saar, Lääne-Eesti saarestiku põhjapoolseim saar. " +
+                    "Hiiumaa piirneb kagus Väinamerega, põhjas ja läänes avamerega. " +
+                    "Saart eraldab Saaremaast Soela väin ja Vormsist Hari kurk. " +
+                    "Hiiumaast loodes asub laevasõiduks ohtlik Hiiu madal.";
+            }
+            else if (et.Text == "Hiiumaa")
+            {
+                img.Source = "hiiumaa.png";
+                lb.Text = "Hiiumaa on Eesti suuruselt teine saar, Lääne-Eesti saarestiku põhjapoolseim saar. " +
+                    "Hiiumaa piirneb kagus Väinamerega, põhjas ja läänes avamerega. " +
+                    "Saart eraldab Saaremaast Soela väin ja Vormsist Hari kurk. " +
+                    "Hiiumaast loodes asub laevasõiduks ohtlik Hiiu madal.";
+            }
         }
 
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
