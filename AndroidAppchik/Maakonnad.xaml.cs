@@ -101,7 +101,7 @@ namespace AndroidAppchik
             }
             else if (et.Text == "Ida-Virumaa")
             {
-                img.Source = "ida-viru.png";
+                img.Source = "idaviru.png";
                 lb.Text = "Ida-Viru maakond ehk Ida-Virumaa on 1. järgu haldusüksus Eesti kirdeosas, Ida-Eesti piirkonnas. " +
                     "Hõlmab ajaloolise Virumaa idaosa. " +
                     "Ida-Virumaa piirneb läänes Lääne-Viru ja edelas Jõgeva maakonnaga ning idas Leningradi oblastiga Venemaal.";
@@ -114,16 +114,80 @@ namespace AndroidAppchik
                     "Saart eraldab Saaremaast Soela väin ja Vormsist Hari kurk. " +
                     "Hiiumaast loodes asub laevasõiduks ohtlik Hiiu madal.";
             }
-            else if (et.Text == "Hiiumaa")
+            else if (et.Text == "Saaremaa")
             {
-                img.Source = "hiiumaa.png";
-                lb.Text = "Hiiumaa on Eesti suuruselt teine saar, Lääne-Eesti saarestiku põhjapoolseim saar. " +
-                    "Hiiumaa piirneb kagus Väinamerega, põhjas ja läänes avamerega. " +
-                    "Saart eraldab Saaremaast Soela väin ja Vormsist Hari kurk. " +
-                    "Hiiumaast loodes asub laevasõiduks ohtlik Hiiu madal.";
+                img.Source = "saaremaa.png";
+                lb.Text = "Saaremaa on Eesti suurim saar ning Sjællandi, Ojamaa ja Fyni järel pindalalt neljas saar Läänemeres. " +
+                    "Saaremaa pindala on 2683 km²." +
+                    "Saare rannajoone pikkus on 874 km. Saaremaal oli 2017. aasta seisuga 31 304 elanikku, olles sellega Läänemere saarte seas üheksandal kohal.";
+            }
+            else if (et.Text == "Raplamaa")
+            {
+                img.Source = "raplamaa.png";
+                lb.Text = "Rapla maakond ehk Raplamaa on 1. järgu haldusüksus Eestis. " +
+                    "Raplamaa piirneb põhjas Harju, idas Järva, lõunas Pärnu, läänes Lääne maakonnaga.";
+            }
+            else if (et.Text == "Järvamaa")
+            {
+                img.Source = "jarvamaa.png";
+                lb.Text = "Järva maakond ehk Järvamaa on 1. järgu haldusüksus Eestis. " +
+                    "Maakond asub Eesti keskosas ning piirneb läänes Harju ja Rapla, " +
+                    "põhjas ja kirdes Lääne-Viru, kagus Jõgeva, lõunas Viljandi ning edelas Pärnu maakonnaga.";
+            }
+            else if (et.Text == "Jõgevamaa")
+            {
+                img.Source = "jogevamaa.png";
+                lb.Text = "Jõgeva maakond ehk Jõgevamaa on 1. järgu haldusüksus Eestis. See hõlmab endise Jõgeva rajooni ala. " +
+                    "Maakond asetseb Ida-Eestis, Mandri-Eesti keskpunkti ja Peipsi järve vahel. " +
+                    "Ajalooliselt on praegune Jõgeva maakond kuulunud Tartu- ja Viljandimaa alla.";
+            }
+            else if (et.Text == "Pärnumaa")
+            {
+                img.Source = "parnumaa.png";
+                lb.Text = "Pärnu maakond ehk Pärnumaa on Eesti 1. järgu haldusüksus. " +
+                    "Pärnu maakond hõlmab enamiku ajaloolise Pärnumaa alasid ning osa vanast Läänemaast. " +
+                    "Pärnu maakond asub Edela-Eestis. " +
+                    "Pärnumaa naabermaakondadeks on loodes Lääne maakond, põhjas Rapla maakond, kirdes Järva maakond, idas Viljandi maakond, läänes Saare maakond. ";
+            }
+            else if (et.Text == "Viljandimaa")
+            {
+                img.Source = "viljandimaa.png";
+                lb.Text = "Viljandi maakond ehk Viljandimaa on maakond Eesti lõunaosas. " +
+                    "Viljandimaa piirneb läänes Pärnu, põhjas Järva, kirdes Jõgeva, idas Tartu ja kagus Valga maakonnaga ning lõunas Lätiga.";
+            }
+            else if (et.Text == "Tartumaa")
+            {
+                img.Source = "tartumaa.png";
+                lb.Text = "Tartu maakond ehk Tartumaa on 1. järgu haldusüksus Eestis. " +
+                    "Hõlmab ajaloolise Tartumaa tuumikala koos Tartu linnaga. " +
+                    "Maakond asub Ida- ja Lõuna-Eesti piiril Peipsi järve ja Võrtsjärve vahel. " +
+                    "Ta piirneb põhjas Jõgeva, läänes Viljandi ning lõunas Põlva ja Valga maakonnaga.";
+            }
+            else if (et.Text == "Valgamaa")
+            {
+                img.Source = "valgamaa.png";
+                lb.Text = "Valga maakond ehk Valgamaa on 1. järgu haldusüksus Eestis. " +
+                    "Hõlmab enamiku Valga rajooni alast. " +
+                    "Maakonnalinn ja ühtlasi suurim asula on Valga linn, sellele järgnevad rahvaarvult Tõrva ja Otepää.";
+            }
+            else if (et.Text == "Põlvamaa")
+            {
+                img.Source = "polvamaa.png";
+                lb.Text = "Põlva maakond ehk Põlvamaa 1. järgu haldusüksus Eestis. " +
+                    "Hõlmab suurema osa endise Põlva rajooni alast.";
+            }
+            else if (et.Text == "Võrumaa")
+            {
+                img.Source = "vorumaa.png";
+                lb.Text = "Võru maakond ehk Võrumaa on 1. järgu haldusüksus Eesti kaguosas. " +
+                    "See hõlmab ajaloolist Võrumaa lõunaosa ning Eesti piires olevat tükki Setumaast. " +
+                    "Maakond piirneb läänes ja loodes Valga maakonnaga, põhjas Põlva maakonnaga, idas Venemaa Pihkva oblastiga ja lõunas Lätiga.";
+            }
+            else
+            {
+                DisplayAlert("Viga", "Maakond peab alustada kõrgtähtega või vale nimi", "Ok");
             }
         }
-
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             picker2.SelectedIndex = picker.SelectedIndex;
