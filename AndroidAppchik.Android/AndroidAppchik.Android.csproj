@@ -187,9 +187,6 @@
     <AndroidResource Include="Resources\drawable\tartumaa.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\tartumaa.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\valgamaa.png" />
   </ItemGroup>
   <ItemGroup>

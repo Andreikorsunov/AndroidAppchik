@@ -183,10 +183,6 @@ namespace AndroidAppchik
                     "See hõlmab ajaloolist Võrumaa lõunaosa ning Eesti piires olevat tükki Setumaast. " +
                     "Maakond piirneb läänes ja loodes Valga maakonnaga, põhjas Põlva maakonnaga, idas Venemaa Pihkva oblastiga ja lõunas Lätiga.";
             }
-            else
-            {
-                DisplayAlert("Viga", "Maakond peab alustada kõrgtähtega või vale nimi", "Ok");
-            }
         }
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
