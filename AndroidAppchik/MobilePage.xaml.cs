@@ -13,18 +13,22 @@ namespace AndroidAppchik
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MobilePage : ContentPage
     {
-        public ObservableCollection<Telefon> telefons { get; set; }
+        //public List<Telefon> telefons { get; set; }
+        //public ObservableCollection<Telefon> telefons { get; set; }
+        public ObservableCollection<Ruhm<string, Telefon>> telefonideruhmades { get; set; }
         Label lbl_list;
         ListView list;
         public MobilePage()
         {
-            telefons = new ObservableCollection<Telefon>
+            var telefonid = new List<Telefon>
             {
                 new Telefon {Nimetus="Samsung Galaxy S22", Tootja ="Samsung", Hind=1249, Pilt ="s22.png" },
                 new Telefon {Nimetus="Sony XA1", Tootja ="Sony", Hind=250, Pilt ="xa1.png" },
                 new Telefon {Nimetus="Xiaomi Mi 11 Lite 5G", Tootja ="Xiaomi", Hind=339, Pilt ="lite11.png" },
                 new Telefon {Nimetus="iPhone 13", Tootja ="Apple", Hind=1179, Pilt ="iphone.png" }
             };
+            var ruhmad = telefonid.GroupBy(p => p.Tootja).Select(g => new Ruhm<string, Telefon>(g.Key, g));
+            telefonideruhmades = new ObservableCollection<Ruhm<string, Telefon>>(ruhmad);
             lbl_list = new Label
             {
                 Text = "Telefonide loetelu",
@@ -33,20 +37,46 @@ namespace AndroidAppchik
             };
             list = new ListView
             {
+                SeparatorColor = Color.Orange,
+                Header = "Minu oma kolektion:",
+                Footer = DateTime.Now.ToString("T"),
                 HasUnevenRows = true,
-                ItemsSource = telefons,
+                ItemsSource = telefonideruhmades,
+                IsGroupingEnabled = true,
+                //ItemsSource = telefons,
+                GroupHeaderTemplate = new DataTemplate(() =>
+                {
+                    Label tootja = new Label();
+                    tootja.SetBinding(Label.TextProperty, "Nimetus");
+                    return new ViewCell
+                    {
+                        View = new StackLayout
+                        {
+                            Padding = new Thickness(0, 5),
+                            Orientation = StackOrientation.Vertical,
+                            Children = { tootja }
+                        }
+                    };
+                }),
                 ItemTemplate = new DataTemplate(() =>
                 {
-                    ImageCell imageCell = new ImageCell { TextColor = Color.Red, DetailColor = Color.Green };
-                    imageCell.SetBinding(ImageCell.TextProperty, "Nimetus");
-                    Binding companyBinding = new Binding { Path = "Tootja", StringFormat = "Tore telefon firmalt {0}" };
-                    imageCell.SetBinding(ImageCell.DetailProperty, companyBinding);
-                    imageCell.SetBinding(ImageCell.ImageSourceProperty, "Pilt");
-                    return imageCell;
+                    Label nimetus = new Label { FontSize = 20 };
+                    nimetus.SetBinding(Label.TextProperty, "Nimetus");
+                    Label hind = new Label();
+                    hind.SetBinding(Label.TextProperty, "Hind");
+                    return new ViewCell
+                    {
+                        View = new StackLayout
+                        {
+                            Padding = new Thickness(0, 5),
+                            Orientation = StackOrientation.Vertical,
+                            Children = { nimetus, hind }
+                        }
+                    };
                 })
             };
             list.ItemTapped += List_ItemTapped;
-            this.Content = new StackLayout { Children = { lbl_list, list } };
+            this.Content = new StackLayout { Children = { lbl_list, list, lisa, kustuta } };
         }
         private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -58,6 +88,19 @@ namespace AndroidAppchik
         {
             if (e.SelectedItem != null)
                 lbl_list.Text = e.SelectedItem.ToString();
+        }
+        private void Kustuta_Clicked(object sender, EventArgs e)
+        {
+            Telefon phone = list.SelectedItem as Telefon;
+            if (phone != null)
+            {
+                telefonid.Remove(phone);
+                list.SelectedItem = null;
+            }
+        }
+        private void Lisa_Clicked(object sender, EventArgs e)
+        {
+            telefonid.Add(new Telefon { Nimetus = "Telefon", Tootja = "Tootja", Hind = 1 });
         }
     }
 }
