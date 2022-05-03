@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 
 namespace AndroidAppchik
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    /*[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MobilePage : ContentPage
     {
         //public List<Telefon> telefons { get; set; }
@@ -102,5 +102,5 @@ namespace AndroidAppchik
         {
             telefonid.Add(new Telefon { Nimetus = "Telefon", Tootja = "Tootja", Hind = 1 });
         }
-    }
+    }*/
 }

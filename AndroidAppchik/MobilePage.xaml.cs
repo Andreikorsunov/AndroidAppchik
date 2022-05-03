@@ -76,7 +76,7 @@ namespace AndroidAppchik
                 })
             };
             list.ItemTapped += List_ItemTapped;
-            this.Content = new StackLayout { Children = { lbl_list, list, lisa, kustuta } };
+            //this.Content = new StackLayout { Children = { lbl_list, list, lisa, kustuta } };
         }
         private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -94,13 +94,13 @@ namespace AndroidAppchik
             Telefon phone = list.SelectedItem as Telefon;
             if (phone != null)
             {
-                telefonid.Remove(phone);
+                //telefonid.Remove(phone);
                 list.SelectedItem = null;
             }
         }
         private void Lisa_Clicked(object sender, EventArgs e)
         {
-            telefonid.Add(new Telefon { Nimetus = "Telefon", Tootja = "Tootja", Hind = 1 });
+            //telefonid.Add(new Telefon { Nimetus = "Telefon", Tootja = "Tootja", Hind = 1 });
         }
     }
 }
