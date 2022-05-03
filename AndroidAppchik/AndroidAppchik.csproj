@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="MobilePage.xaml.cs">
+      <DependentUpon>MobilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="StepperSlider.xaml.cs">
       <DependentUpon>StepperSlider.xaml</DependentUpon>
     </Compile>
