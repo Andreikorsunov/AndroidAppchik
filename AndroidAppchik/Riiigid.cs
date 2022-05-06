@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AndroidAppchik
 {
-    public class Riigid
+    public class Riiigid
     {
         public string Riik { get; set; }
         public string Pealinn { get; set; }

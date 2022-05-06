@@ -10,25 +10,20 @@ using Xamarin.Forms.Xaml;
 
 namespace AndroidAppchik
 {
-    /*[XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MobilePage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RiikPage : ContentPage
     {
-        //public List<Telefon> telefons { get; set; }
-        //public ObservableCollection<Telefon> telefons { get; set; }
-        public ObservableCollection<Ruhm<string, Telefon>> telefonideruhmades { get; set; }
+        public List<Riiigid> riikid { get; set; }
         Label lbl_list;
         ListView list;
-        public MobilePage()
+        public RiikPage()
         {
-            var telefonid = new List<Telefon>
+            riikid = new List<Riiigid>
             {
-                new Telefon {Nimetus="Samsung Galaxy S22", Tootja ="Samsung", Hind=1249, Pilt ="s22.png" },
-                new Telefon {Nimetus="Sony XA1", Tootja ="Sony", Hind=250, Pilt ="xa1.png" },
-                new Telefon {Nimetus="Xiaomi Mi 11 Lite 5G", Tootja ="Xiaomi", Hind=339, Pilt ="lite11.png" },
-                new Telefon {Nimetus="iPhone 13", Tootja ="Apple", Hind=1179, Pilt ="iphone.png" }
+                new Riiigid {Riik = "Eesti", Pealinn = "Tallinn", Rahvaarv=1331000, Flag="eesti.jpg"},
+                new Riiigid {Riik = "Latvia", Pealinn = "Riga", Rahvaarv=1902000, Flag="latvia.jpg"},
+                new Riiigid {Riik = "Leedu", Pealinn = "Vilnius", Rahvaarv=2795000, Flag="leedu.jpg"}
             };
-            var ruhmad = telefonid.GroupBy(p => p.Tootja).Select(g => new Ruhm<string, Telefon>(g.Key, g));
-            telefonideruhmades = new ObservableCollection<Ruhm<string, Telefon>>(ruhmad);
             lbl_list = new Label
             {
                 Text = "Telefonide loetelu",
@@ -37,14 +32,8 @@ namespace AndroidAppchik
             };
             list = new ListView
             {
-                SeparatorColor = Color.Orange,
-                Header = "Telefonid rühmades:",
-                Footer = DateTime.Now.ToString("T"),
-                HasUnevenRows = true,
-                ItemsSource = telefonideruhmades,
-                IsGroupingEnabled = true,
-                //ItemsSource = telefons,
-                GroupHeaderTemplate = new DataTemplate(() =>
+                ItemsSource = Riig
+                /*GroupHeaderTemplate = new DataTemplate(() =>
                 {
                     Label tootja = new Label();
                     tootja.SetBinding(Label.TextProperty, "Nimetus");
@@ -73,17 +62,18 @@ namespace AndroidAppchik
                             Children = { nimetus, hind }
                         }
                     };
-                })
+                })*/
             };
-            list.ItemTapped += List_ItemTapped;
-            this.Content = new StackLayout { Children = { lbl_list, list, lisa, kustuta } };
+            list.ItemSelected += List_ItemSelected;
+            /*list.ItemTapped += List_ItemTapped;*/
+            this.Content = new StackLayout { Children = { lbl_list, list } };
         }
-        private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
+        /*private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Telefon selectedPhone = e.Item as Telefon;
             if (selectedPhone != null)
                 await DisplayAlert("Valitud mudel", $"{selectedPhone.Tootja} -{selectedPhone.Nimetus}", "OK");
-        }
+        }*/
         private void List_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
@@ -102,5 +92,5 @@ namespace AndroidAppchik
         {
             telefonid.Add(new Telefon { Nimetus = "Telefon", Tootja = "Tootja", Hind = 1 });
         }
-    }*/
+    }
 }

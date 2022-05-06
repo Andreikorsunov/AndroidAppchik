@@ -16,6 +16,7 @@ namespace AndroidAppchik
         StackLayout st;
         Editor et;
         Label lb;
+        Button ets;
         public Maakonnad()
         {
             picker = new Picker
@@ -66,15 +67,18 @@ namespace AndroidAppchik
             lb = new Label();
             et = new Editor 
             { 
-                Placeholder = "Maakond",
-                Text = ""
+                Placeholder = "Maakond"
             };
-            et.TextChanged += ET_TextChanged;
+            ets = new Button
+            {
+                Text = "Otsi"
+            };
+            ets.Clicked += ET_TextChanged;
 
-            Content = new StackLayout { Children = { picker, picker2, img, lb, et } };
+            Content = new StackLayout { Children = { picker, picker2, img, lb, et, ets } };
         }
 
-        private void ET_TextChanged(object sender, TextChangedEventArgs e)
+        private void ET_TextChanged(object sender, EventArgs e)
         {
             if (et.Text == "Harjumaa")
             {
