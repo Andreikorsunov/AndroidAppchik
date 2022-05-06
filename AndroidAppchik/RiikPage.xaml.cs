@@ -16,68 +16,51 @@ namespace AndroidAppchik
         public List<Riiigid> riikid { get; set; }
         Label lbl_list;
         ListView list;
+        Button lisa, kustuta;
         public RiikPage()
         {
             riikid = new List<Riiigid>
             {
-                new Riiigid {Riik = "Eesti", Pealinn = "Tallinn", Rahvaarv=1331000, Flag="eesti.jpg"},
+                new Riiigid {Riik = "Eesti", Pealinn = "Tallinn", Rahvaarv=1331000, Flag="eesti.png"},
                 new Riiigid {Riik = "Latvia", Pealinn = "Riga", Rahvaarv=1902000, Flag="latvia.jpg"},
                 new Riiigid {Riik = "Leedu", Pealinn = "Vilnius", Rahvaarv=2795000, Flag="leedu.jpg"}
             };
             lbl_list = new Label
             {
-                Text = "Telefonide loetelu",
+                Text = "Riigi loetelu",
                 HorizontalOptions = LayoutOptions.Center,
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
             };
             list = new ListView
             {
-                ItemsSource = Riig
-                /*GroupHeaderTemplate = new DataTemplate(() =>
+                HasUnevenRows = true,
+                ItemsSource = riikid,
+                ItemTemplate = new DataTemplate(()=>
                 {
-                    Label tootja = new Label();
-                    tootja.SetBinding(Label.TextProperty, "Nimetus");
-                    return new ViewCell
-                    {
-                        View = new StackLayout
-                        {
-                            Padding = new Thickness(0, 5),
-                            Orientation = StackOrientation.Vertical,
-                            Children = { tootja }
-                        }
-                    };
-                }),
-                ItemTemplate = new DataTemplate(() =>
-                {
-                    Label nimetus = new Label { FontSize = 20 };
-                    nimetus.SetBinding(Label.TextProperty, "Nimetus");
-                    Label hind = new Label();
-                    hind.SetBinding(Label.TextProperty, "Hind");
-                    return new ViewCell
-                    {
-                        View = new StackLayout
-                        {
-                            Padding = new Thickness(0, 5),
-                            Orientation = StackOrientation.Vertical,
-                            Children = { nimetus, hind }
-                        }
-                    };
-                })*/
+                    ImageCell imageCell = new ImageCell { TextColor = Color.Red, DetailColor = Color.Green };
+                    ImageCell.SetBinding(ImageCell.TextProperty, "Riik");
+                    Binding companyBinding = new Binding { Path = "Pealinn", StringFormat = "Tore telefon firmalt {0}" };
+                    imageCell.SetBinding(ImageCell.DetailProperty, companyBinding);
+                    imageCell.SetBinding(ImageCell.ImageSourceProperty, "Pilt");
+                    return imageCell;
+                })
             };
-            list.ItemSelected += List_ItemSelected;
-            /*list.ItemTapped += List_ItemTapped;*/
-            this.Content = new StackLayout { Children = { lbl_list, list } };
+            lisa = new Button 
+            { 
+                Text = "Lisa felefon"
+            };
+            kustuta = new Button 
+            { 
+                Text = "Kustuta telefn" 
+            };
+            list.ItemTapped += List_ItemTapped;
+            this.Content = new StackLayout { Children = { lbl_list, list, lisa, kustuta } };
         }
-        /*private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Telefon selectedPhone = e.Item as Telefon;
             if (selectedPhone != null)
-                await DisplayAlert("Valitud mudel", $"{selectedPhone.Tootja} -{selectedPhone.Nimetus}", "OK");
-        }*/
-        private void List_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem != null)
-                lbl_list.Text = e.SelectedItem.ToString();
+                await DisplayAlert("Valitud riik", $"{selectedPhone.Tootja} -{selectedPhone.Nimetus}", "OK");
         }
         private void Kustuta_Clicked(object sender, EventArgs e)
         {
