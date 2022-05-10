@@ -50,7 +50,7 @@ namespace AndroidAppchik
                 {
                     ImageCell imageCell = new ImageCell { TextColor = Color.Red, DetailColor = Color.Green };
                     imageCell.SetBinding(ImageCell.TextProperty, "Riik");
-                    Binding companyBinding = new Binding { Path = "Pealinn", StringFormat = "Tore riik {0}" };
+                    Binding companyBinding = new Binding { Path = "Pealinn", StringFormat = "{0}" };
                     imageCell.SetBinding(ImageCell.DetailProperty, companyBinding);
                     imageCell.SetBinding(ImageCell.ImageSourceProperty, "Flag");
                     return imageCell;
