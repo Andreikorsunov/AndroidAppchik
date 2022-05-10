@@ -72,13 +72,18 @@ namespace AndroidAppchik
                 Text = "Maakonnad",
                 BackgroundColor = Color.LightGreen,
             };
+            Button Riigid = new Button()
+            {
+                Text = "Riigid",
+                BackgroundColor = Color.LightGreen,
+            };
             Maakonnad.Clicked += Maakonnad_Btn_Clicked;
             RGB_Btn.Clicked += RGB_Btn_Clicked;
             Valgusfoor_btn.Clicked += Valgusfoor_btn_Clicked;
             TTT.Clicked += TTT_Clicked;
             StackLayout st = new StackLayout()
             {
-                Children = { Ent_btn, Table_btn, cliker, Date_btn, SS_btn, frame_btn, image_btn, Valgusfoor_btn, RGB_Btn, TTT, Maakonnad}
+                Children = { Ent_btn, Table_btn, cliker, Date_btn, SS_btn, frame_btn, image_btn, Valgusfoor_btn, RGB_Btn, TTT, Maakonnad, Riigid}
             };
             st.BackgroundColor = Color.AntiqueWhite;
             Content = st;
@@ -87,7 +92,14 @@ namespace AndroidAppchik
             cliker.Clicked += Cliker_Clicked;
             Date_btn.Clicked += Date_btn_Clicked;
             SS_btn.Clicked += SS_btn_Clicked;
+            Riigid.Clicked += Riigid_btn_Clicked;
         }
+
+        private async void Riigid_btn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RiikPage());
+        }
+
         private async void Maakonnad_Btn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Maakonnad());
