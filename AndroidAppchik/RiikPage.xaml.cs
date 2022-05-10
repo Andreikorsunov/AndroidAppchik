@@ -65,13 +65,15 @@ namespace AndroidAppchik
                 Text = "Kustuta riik" 
             };
             list.ItemTapped += List_ItemTapped;
+            kustuta.Clicked += Kustuta_Clicked;
+            lisa.Clicked += Lisa_Clicked;
             this.Content = new StackLayout { Children = { lbl_list, list, lisa, kustuta } };
         }
         private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Riiigid selectedRiik = e.Item as Riiigid;
             if (selectedRiik != null)
-                await DisplayAlert("Valitud riik", $"{selectedRiik.Pealinn} - {selectedRiik.Riik}", "OK");
+                await DisplayAlert("Valitud riik", $"{selectedRiik.Rahvaarv} inimesed - {selectedRiik.Riik}", "OK");
         }
         private void Kustuta_Clicked(object sender, EventArgs e)
         {
