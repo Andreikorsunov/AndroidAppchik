@@ -84,9 +84,13 @@ namespace AndroidAppchik
                 list.SelectedItem = null;
             }
         }
-        private void Lisa_Clicked(object sender, EventArgs e)
+        public async void Lisa_Clicked(object sender, EventArgs e)
         {
-            riikid.Add(new Riiigid { Riik = "Riik", Pealinn = "Pealinn", Rahvaarv = 1 });
+            string riik = await DisplayPromptAsync("Lisage riik", "Nimetus riik: ", initialValue: "", keyboard: Keyboard.Chat);
+            string pealinn = await DisplayPromptAsync("Lisage pealinn", $"{riik}" + " pealinna nimi: ", initialValue: "", keyboard: Keyboard.Chat);
+            string rahvaarv = await DisplayPromptAsync("Lisage elanikkond", "Kui palju inimesi elab " + $"{riik}" + ": ", initialValue: "1", keyboard: Keyboard.Numeric);
+            int rahvaarvi = Convert.ToInt32(rahvaarv);
+            riikid.Add(new Riiigid { Riik = riik, Pealinn = pealinn, Rahvaarv = rahvaarvi });
         }
     }
 }
