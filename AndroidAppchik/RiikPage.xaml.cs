@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
 
 namespace AndroidAppchik
 {
@@ -62,7 +58,7 @@ namespace AndroidAppchik
             };
             kustuta = new Button 
             { 
-                Text = "Kustuta riik" 
+                Text = "Kustuta riik"
             };
             list.ItemTapped += List_ItemTapped;
             kustuta.Clicked += Kustuta_Clicked;
@@ -90,7 +86,9 @@ namespace AndroidAppchik
             string pealinn = await DisplayPromptAsync("Lisage pealinn", $"{riik}" + " pealinna nimi: ", initialValue: "", keyboard: Keyboard.Chat);
             string rahvaarv = await DisplayPromptAsync("Lisage elanikkond", "Kui palju inimesi elab " + $"{riik}" + ": ", initialValue: "1", keyboard: Keyboard.Numeric);
             int rahvaarvi = Convert.ToInt32(rahvaarv);
-            riikid.Add(new Riiigid { Riik = riik, Pealinn = pealinn, Rahvaarv = rahvaarvi });
+            string flag = await DisplayPromptAsync("Lisage foto", "Saadaval riigipildi: austria.png belgia.jpg bulgaria.jpg " +
+                   "chech.jpg dania.jpg eesti.png grecia.jpg latvia.jpg leedu.jpg saksamaa.jpg vengria.jpg", "ОK", "Cancel");
+            riikid.Add(new Riiigid { Riik = riik, Pealinn = pealinn, Rahvaarv = rahvaarvi, Flag = flag });
         }
     }
 }
