@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Temperament.xaml.cs">
+      <DependentUpon>Temperament.xaml</DependentUpon>
+    </Compile>
     <Compile Update="RiikPage.xaml.cs">
       <DependentUpon>RiikPage.xaml</DependentUpon>
     </Compile>
